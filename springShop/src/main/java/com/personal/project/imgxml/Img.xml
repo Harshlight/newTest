@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.personal.project.imgxml.Img">
+	<insert id="insert" parameterType="com.personal.project.imgxml.Img">
+	INSERT INTO Imgpath VALUES(#{num}, #{name}, #{imgpath})
+	</insert>
+	
+	<select id = "selectimgpath" resultType="com.personal.project.vo.ImgpathVO">
+	SELECT num, name, imgpath
+	FROM Imgpath
+	WHERE num = #{num}
+	</select>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM Imgpath WHERE num=#{num}
+	</delete>
+	
+</mapper>

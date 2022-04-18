@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.personal.project.shopxml.ShopXmlMapper">
+
+    <select id="select" 
+    	resultType="com.personal.project.vo.ShopVO" 
+    	parameterType="Integer">
+        SELECT num,name,com,sum,price,pdate
+        FROM shop
+        WHERE num = #{num}
+    </select>
+    
+    <!--insert 요소는 resultType 속성이 없어도 생성된 행의 수(정수)가 리턴됨-->
+    <insert id="insert" 
+    	parameterType="com.personal.project.vo.ShopVO">
+    	INSERT INTO shop VALUES(#{num},#{name},#{com},#{sum},#{price},#{pdate})
+    </insert>
+    
+    <!-- 
+    <select id="getList" 
+    	resultType="com.personal.project.vo.ShopVO" 
+    	parameterType="Integer">
+        SELECT num,name,com,sum,price,pdate,imgpath
+        FROM shop
+        WHERE num = #{num}
+    </select>
+     -->
+	<!-- 한 행을 추가하고 자동증가필드의 값을 파라미터 객체의 num변수에 할당-->
+	<!-- 
+	<insert id="addAndGetKey" useGeneratedKeys="true" keyProperty="num"
+        parameterType="com.example.demo.vo.User">
+		INSERT INTO user VALUES(NULL,#{name},#{phone},#{email})
+	</insert>
+	-->
+
+    <!--update 요소는 resultType 속성이 없어도 변경된 행의 수(정수)가 리턴됨-->
+    <update id="update" 
+    	parameterType="com.personal.project.vo.ShopVO">
+    	UPDATE shop 
+    	SET sum=#{sum}, price=#{price}
+    	WHERE num=#{num}
+    </update>
+
+    <!--delete 요소는 resultType 속성이 없어도 변경된 행의 수(정수)가 리턴됨-->
+    <delete id="delete" parameterType="Integer">
+    	DELETE FROM shop WHERE num=#{num}
+    </delete>
+    
+    <!--
+    <select id="findWithoutId" 
+    	resultType="com.example.demo.vo.User"
+    	parameterType="com.example.demo.vo.User">
+    	SELECT * FROM user
+    	<where>
+    		<if test="name != null">
+    			name=#{name}
+    		</if>
+    		<if test="phone != null">
+    			AND phone=#{phone}
+    		</if>
+    		<if test="email != null">
+    			AND email=#{email}
+    		</if>
+    	</where>
+    </select>  -->
+</mapper>

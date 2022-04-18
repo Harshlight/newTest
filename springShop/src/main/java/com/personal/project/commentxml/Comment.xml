@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.personal.project.commentxml.Comment">
+	<insert id="inputcomment" 
+    	parameterType="com.personal.project.vo.ShopCommentVO">
+    	INSERT INTO shopcomment VALUES(#{num},#{uid},#{date},#{comment})
+    </insert>
+    
+    <select id="selectcommentList"
+    	resultType="com.personal.project.vo.ShopCommentVO"
+    	parameterType="Integer">
+    	SELECT num, uid, date, comment
+    	FROM shopcomment
+    	WHERE num = #{num}
+    </select>
+    
+</mapper>
